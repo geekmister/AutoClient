@@ -1,2 +1,3 @@
-# web-auto-test-client
-Web auto test client framework based on selenium...
+# cd-auto-test-client
+
+Auto test client of Calculbility Document. 

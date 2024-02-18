@@ -5,7 +5,7 @@
 @Author  : geek mister
 @Date    : 2024/1/9 17:01
 @MyHome  : https://github.com/geekmister
-@Desc    : Test case executor
+@Desc    : Test case executors
 """
 
 

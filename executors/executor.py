@@ -5,94 +5,124 @@
 @Author  : geek mister
 @Date    : 2024/1/9 17:01
 @MyHome  : https://github.com/geekmister
-@Desc    : Test case executors
+@Desc    : Test case executor.
 """
 
 
 class TestCaseExecutor:
     """
-
+    Test case executor class
     """
 
-    @staticmethod
-    def execute(test_cases):
-        for test_case in test_cases:
-            handler(test_case)
+    def __init__(self, test_cases):
+        self.test_cases = test_cases
 
+    def execute(self):
+        """
+        Main execute function
+        Args:
 
-def handler(test_case):
-    # Handle test_info
-    test_infos = test_case["test_infos"]
-    handle_test_infos(test_infos)
+        Returns:
+            -> None
+        """
 
-    # Handle test_pres
-    test_pres = test_case["test_pres"]
+        for test_case in self.test_cases:
 
-    # Handle test_steps
-    test_steps = test_case["test_steps"]
+            test_infos = test_case["test_infos"]
+            self.parser_test_infos(test_infos)
 
-    # Handle test_checks
-    test_checks = test_case["test_checks"]
+            test_pres = test_case["test_pres"]
+            self.parser_test_pres(test_pres)
 
+            test_steps = test_case["test_steps"]
+            self.parser_test_steps(test_steps)
 
-def handle_test_infos(test_infos):
-    if test_infos.length > 0:
-        test_info = test_infos[0]
-        id = test_info["id"]
-        check = test_info["check"]
-        pre = test_info["pre"]
+            test_checks = test_case["test_checks"]
+            self.parser_test_checks(test_checks)
 
+    def parser_test_infos(self, test_infos):
+        """
+        Parser test info list
+        Args:
+            test_infos(list): list, test info list
 
-def handle_test_pres(test_pres):
-    if test_pres.length > 0:
-        for test_pre in test_pres:
-            operate_parser(test_pre)
+        Returns:
+            -> None
+        """
 
+        if test_infos.length > 0:
+            test_info = test_infos[0]
+            id = test_info["id"]
+            check = test_info["check"]
+            pre = test_info["pre"]
 
-def handle_test_steps(test_pres):
+    def parser_test_pres(self, test_pres):
+        """
+        Parser test pre list
+        Args:
+            test_pres(list): list, test pre list
 
-    pass
+        Returns:
+            -> None
+        """
 
+        if test_pres.length > 0:
+            for test_pre in test_pres:
+                self.parser_operation_type(test_pre)
 
-def handle_test_checks(test_pres):
-    pass
+    def parser_test_steps(self, test_steps):
+        """
+        Parser test step list
+        Args:
+            test_steps(list): list, test step list
 
+        Returns:
+            -> None
+        """
 
-def operate_parser(item):
-    """
-    Operate parser, we
-    Args:
-        item(dict): item of test_pres & test_steps & test_checks
+        pass
 
-    Returns:
-        None
-    """
+    def parser_test_checks(self, test_checks):
+        """
+        Parser test check list
+        Args:
+            test_checks(list): list, test check list
 
-    operate_type = item["operate_type"]
-    match operate_type:
-        case "driver":
-            pass
-        case "browser":
-            pass
-        case "wait":
-            pass
-        case "element":
-            pass
-        case "interaction":
-            pass
-        case "actions":
-            operate_action = item["operate_action"]
-            match operate_action:
-                case "keyboard":
-                    pass
-                case "mouse":
-                    pass
-                case "pen":
-                    pass
-                case "wheel":
-                    pass
-                case _:
-                    pass
-            pass
-        case _:
-            pass
+        Returns:
+            -> None
+        """
+
+        pass
+
+    def parser_operation_type(self, item):
+        """
+        Parser operation type
+        Args:
+            item(object): object, item object
+
+        Returns:
+            -> None
+        """
+
+        operation_type = item["operation_type"]
+        match operation_type:
+            case "driver":
+                pass
+            case "browser":
+                pass
+            case "wait":
+                pass
+            case "element":
+                pass
+            case "interaction":
+                pass
+            case "interface":
+                pass
+            case "double-protocol":
+                pass
+            case "additional":
+                pass
+            case "trouble-removal":
+                pass
+            case _:
+                pass

@@ -234,5 +234,18 @@ class MouseAction:
         ActionChains(driver).drag_and_drop_by_offset(element, x_end - x_start, y_end - y_start).perform()
 
 
+class Element:
+    """
+    Actions about element
+    """
+
+    @staticmethod
+    def find_element(self, way, value):
+        match way:
+            case "class_name":
+                pass
+            case _:
+                pass
+        pass
 
 

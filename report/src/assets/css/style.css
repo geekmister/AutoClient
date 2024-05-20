@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(#0A0011, #0C0B1F, #101628, #151D2F, #11182A, #150D21, #0A0011);
+}
+
+p {
+    margin: 0 0;
+}
+
+.m-right-20 {
+    margin-right: 20px;
+}
+.m-right-100 {
+    margin-right: 100px;
+}

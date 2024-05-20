@@ -5,5 +5,5 @@
 @Author  : Geekmister
 @Date    : 2024/1/4 14:42
 @MyHome  : https://github.com/geekmister
-@Desc    : Init python file of the module what test_cases.
+@Desc    : Init python file of the module what executors.
 """

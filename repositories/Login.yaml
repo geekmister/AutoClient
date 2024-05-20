@@ -3,12 +3,16 @@ test_infos:
     check: 检查登录流程是否正常
     pre: 未登录
 test_pres:
-  - operate_type: driver
-    operate_action: open_url
-    operate_value: https://keepwork.com/
+  - operation_type: driver
+    local_or_remote: local
+    operation_action: open_url
+    browser_type: chrome
+    url: https://keepwork.com/
     info: 打开网站
-  - operate_type: wait
-    value: 5000
+  - operation_type: wait
+    second: 5
+    find_element_way: id
+    find_element_value: login
     info: 等待5s
   - operate_type: element
     operate_action: find
@@ -19,8 +23,8 @@ test_steps:
     operate_action: mouse_left_click
     element_info:
     info: 点击“登录”按钮
-  - operate_type: wait
-    value: 500
+  - operation_type: wait
+    millisecond: 500
     info: 等待500毫秒
   - operate_type: actions
     operate_action: mouse_left_click

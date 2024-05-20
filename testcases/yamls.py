@@ -1,6 +1,6 @@
 """
 @Project : cd-auto-test-client.git
-@File    : yaml_manager.py
+@File    : yamls.py
 @IDE     : PyCharm
 @Author  : geek mister
 @Date    : 2024/1/9 15:10

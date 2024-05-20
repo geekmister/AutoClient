@@ -51,6 +51,18 @@ class DriverManager:
         else:
             logger.error("no match browser name")
 
+        # Setting global wait time for the session.
+        self.__webdriver.implicitly_wait(10)
+
+    def get(self):
+        """
+        Get webdriver
+        Returns:
+            type: object
+            -> webdriver
+        """
+        return self.__webdriver
+
     def quit(self):
         """
         quit driver

@@ -1,3 +1,0 @@
-# cd-auto-test-service
-
-The project is micro service of calculality cloud document auto test...

@@ -19,8 +19,9 @@ from utils.logger import logger
 
 
 chrome_options = driver_manager.ChromeOptions()
-# webdriver = driver_manager.get_webdriver(options=chrome_options)
-webdriver = webdriver.Chrome(options=chrome_options)
+chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+chrome_options.add_argument("--disable-infobars")
+webdriver = driver_manager.get_webdriver(options=chrome_options)
 
 
 def setup_module(module):
@@ -60,13 +61,25 @@ def test_open_login_dialog():
     Return:
         None
     """
- 
-    time.sleep(5)
-    webdriver.find_element(By.XPATH, "/html/body/div[2]/section/header/div/ul/li[2]/button[2]").click()
-    # wait = WebDriverWait(webdriver, 10)
-    # wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[5]/div/div/div/div/div[1]/form/div[3]/div/button/span")))
-    time.sleep(5)
-    element_tem = webdriver.find_element(By.CLASS_NAME, "login-page-form-three-login")
-    # dom = element_tem.get_attribute("outerHTML")
-    # list = webdriver.find_elements(By.XPATH, "/html/body/div[5]/div/div/div/div/div[1]/form/div[3]/div/button/span")
-    time.sleep(10)
+
+    # NOTE 
+    # The under code try...except...finally... is written by official document selenium-python, but it's running failed.
+    # Annoted four lines is running success.
+    # So, I need to learn to why write way official is failed. It's not undertand.
+    try:
+        element = WebDriverWait(webdriver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "/html/body/div[2]/section/header/div/ul/li[2]/button[2]")))
+        element.click()
+        element = WebDriverWait(webdriver, 10).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, "forget-pwd")))
+        assert True
+    except Exception as e:
+        logger.error("test_open_login_dialog error: %s", e)
+        assert False
+    finally:
+        driver_manager.webdriver_quit(webdriver)
+    
+    # time.sleep(10)
+    # webdriver.find_element(By.XPATH, "/html/body/div[2]/section/header/div/ul/li[2]/button[2]").click()
+    # time.sleep(10)
+    # assert webdriver.find_element(By.CLASS_NAME, "forget-pwd").text == "忘记密码?"
